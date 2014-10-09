@@ -5,7 +5,8 @@
  */
 var user = require('../../app/controllers/users'),
     quizzes = require('../../app/controllers/quizzes'),
-    questions = require('../../app/controllers/questions');
+    questions = require('../../app/controllers/questions'),
+    score = require('../../app/controllers/score');
 
     module.exports = function(app){
 
@@ -29,6 +30,10 @@ var user = require('../../app/controllers/users'),
            .get(questions.retrieve)
           //  .put(questions.update)
             .delete(questions.delete);
+
+        app.route('/quiz/:quizId/score')
+            .get(score.getScore)
+            .post(score.create);
 
         app.param('quizId', quizzes.fetchById);
         app.param('category', quizzes.fetchByCategory);
