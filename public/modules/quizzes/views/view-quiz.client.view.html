@@ -1,0 +1,15 @@
+<section data-ng-controller="QuizController" data-ng-init="getQuiz()">
+	<div>
+		<h2>{{quiz.quizName}}</h2>
+		<ol>
+			<li data-ng-repeat="ques in quiz.questions">
+				<h3>{{ques.question}}</h3>
+				
+					<p data-ng-repeat="option in ques.questionOptions">
+						{{option}}
+					</p>
+				
+			</li>
+		</ol>
+	</div>
+</section>

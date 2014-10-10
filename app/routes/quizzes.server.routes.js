@@ -10,28 +10,28 @@ var user = require('../../app/controllers/users'),
 
     module.exports = function(app){
 
-        app.route('/quiz')
+        app.route('/quizzes')
             .get(quizzes.list)
             .post(quizzes.create);
 
-        app.route('/quiz/:quizId')
+        app.route('/quizzes/:quizId')
             .get(quizzes.retrieve)
             .put(quizzes.edit)
             .delete(quizzes.delete);
 
-        app.route('/quiz/cat/:category')
+        app.route('/quizzes/cat/:category')
             .get(quizzes.retrieve);
 
-        app.route('/quiz/:quizId/q')
+        app.route('/quizzes/:quizId/q')
             .get(questions.retrieve)
             .post(questions.addQuestion);
 
-        app.route('/quiz/:quizId/q/:questionId')
+        app.route('/quizzes/:quizId/q/:questionId')
            .get(questions.retrieve)
           //  .put(questions.update)
             .delete(questions.delete);
 
-        app.route('/quiz/:quizId/score')
+        app.route('/quizzes/:quizId/score')
             .get(score.getScore)
             .post(score.create);
 
