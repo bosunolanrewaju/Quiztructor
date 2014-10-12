@@ -1,6 +1,10 @@
 <section data-ng-controller="QuizController" data-ng-init="getQuiz()">
 	<div>
 		<h2>{{quiz.quizName}}</h2>
+		<p>Quiz description</p>
+		<a class="btn btn-primary">Take Quiz Now</a>
+		
+		<the-questions></the-questions>
 		<ol>
 			<li data-ng-repeat="ques in quiz.questions">
 				<h3>{{ques.question}}</h3>
@@ -11,5 +15,8 @@
 				
 			</li>
 		</ol>
+		<div data-ng-if="isAuthor">
+			<button class="btn btn-primary">Add Question</button>
+		</div>
 	</div>
 </section>

@@ -1,0 +1,20 @@
+<div>
+	<ol>
+		<li data-ng-repeat="question in questionArray">
+			<h3>{{question.question}}</h3>
+			<p data-ng-repeat="option in question.questionOptions">
+				{{option}}
+			</p>
+		</li>
+	</ol>
+</div>
+<br><input id="question" type="text" name="question" data-ng-model="question" placeholder="Enter Question here"><br>
+{{questionOptions}}
+{{answer}}
+	<div id="optionDiv">
+		<input type="text" name="option" data-ng-model="questionOptions[0]" placeholder="option1">
+	<input type="radio" name="optionanswer" value="{{questionOptions[0]}}" data-ng-model="answer"><br>
+	<input type="text" name="option" data-ng-model="questionOptions[1]" placeholder="option2"><input type="radio" name="optionanswer" value="{{questionOptions[1]}}" data-ng-model="answer"><br>
+	</div>
+	<a class="btn btn-primary" data-ng-click="addOption()">+</a>
+	<a class="btn btn-primary" data-ng-click="addQuestion()">Add Question</button>
