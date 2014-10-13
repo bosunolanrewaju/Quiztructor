@@ -3,18 +3,8 @@
 		<h2>{{quiz.quizName}}</h2>
 		<p>Quiz description</p>
 		<a class="btn btn-primary">Take Quiz Now</a>
+			<the-questions></the-questions>
 		
-		<the-questions></the-questions>
-		<ol>
-			<li data-ng-repeat="ques in quiz.questions">
-				<h3>{{ques.question}}</h3>
-				
-					<p data-ng-repeat="option in ques.questionOptions">
-						{{option}}
-					</p>
-				
-			</li>
-		</ol>
 		<div data-ng-if="isAuthor">
 			<button class="btn btn-primary">Add Question</button>
 		</div>

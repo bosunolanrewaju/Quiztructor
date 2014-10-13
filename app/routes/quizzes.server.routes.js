@@ -35,6 +35,9 @@ var user = require('../../app/controllers/users'),
             .get(score.getScore)
             .post(score.create);
 
+        app.route('/quizzes/:quizId/process')
+            .post(quizzes.processResult);
+
         app.param('quizId', quizzes.fetchById);
         app.param('category', quizzes.fetchByCategory);
         app.param('questionId', questions.fetchById);

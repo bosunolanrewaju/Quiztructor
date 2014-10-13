@@ -1,0 +1,11 @@
+<section>
+	<h3>{{currentQuestion.question}}</h3>
+	<ol type="A">
+		<li class="well" data-ng-repeat="option in currentQuestion.questionOptions">			
+			<input id="option_{{currentQuestion._id}}_{{$index + 1}}" type="radio" name="a{{currentQuestion._id}}" value="{{option}}" data-ng-model="$parent.userAnswer">
+			<label for="option_{{currentQuestion._id}}_{{$index + 1}}">{{option}}</label>
+		</li>
+	</ol>
+	<a class="btn btn-primary" data-ng-click="getNextQuestion()" data-ng-disabled="userAnswer === ''" data-ng-hide="count === quiz.questions.length">Submit & Proceed</a>
+	<button type="submit" data-ng-show="count === quiz.questions.length" data-ng-click="markQuiz()">Submit Quiz</button>
+</section>

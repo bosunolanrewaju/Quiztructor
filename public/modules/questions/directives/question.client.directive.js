@@ -49,4 +49,43 @@ angular.module('questions')
 				
 			}
 		};
+	})
+	.directive('theQuestions', function($timeout, $stateParams, ProcessQuiz){
+		return {
+			restrict: 'E',
+			templateUrl: 'modules/questions/views/view-question.client.view.html',
+			controller: function($scope){
+				$scope.userAnswer = '';
+			},
+			link: function(scope, element, attr){
+				scope.count = 0;
+				scope.userAnswerArray = [];
+				
+				scope.getNextQuestion =  function(){
+					if(scope.userAnswer !== ''){
+						scope.userAnswerArray.push(scope.userAnswer);
+					}
+
+					$timeout(function(){
+						scope.currentQuestion = scope.quiz.questions[scope.count];
+						scope.count++;
+						console.log(scope.userAnswer);
+					}, 500);
+				};
+
+				scope.getNextQuestion(0);
+
+				scope.markQuiz = function(){
+					scope.userAnswerArray.push(scope.userAnswer);
+					var result = new ProcessQuiz({
+						quizId: $stateParams.quizId,
+						userAnswer: scope.userAnswerArray
+					});
+
+					result.$save(function(result){
+						console.log(result);
+					});
+				};
+			}
+		};
 	});

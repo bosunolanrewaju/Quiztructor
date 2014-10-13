@@ -8,4 +8,11 @@ angular.module('questions').factory('QuestionService', ['$resource', function($r
 		} 
 		// actions
 		);
+}]).factory('ProcessQuiz', ['$resource', function($resource){
+	return $resource('quizzes/:quizId/process/', 
+		{
+			quizId: '@quizId'
+		} 
+		// actions
+		);
 }]);

@@ -76,6 +76,35 @@ exports.delete = function(req, res){
         });
 };
 
+
+exports.processResult = function(req, res){
+    var userAnswers = req.body.userAnswer,
+        id = req.body.quizId,
+        correct = 0;
+
+    Quiz.findById(id).select('questions.answer').exec(function(err, ans){
+        if(userAnswers.length !== ans.questions.length){
+            console.log('not passed');
+            return new Error('Something went wrong is processing your result');
+        } else {
+            console.log('passed');
+            for(var i = 0; i < userAnswers.length; i++){
+                console.log(userAnswers[i] + '-' + ans.questions[i].answer);
+                if(userAnswers[i] === ans.questions[i].answer){
+                    correct++;
+                }
+            }
+
+            var response = {
+                correctAnswer: correct,
+                totalQuestion: userAnswers.length
+            };
+            console.log(response);
+            res.jsonp(response);
+        }
+    });
+};
+
 // Middleware for fetching quiz by findById
 exports.fetchById = function(req, res, next, id){
     Quiz.findById(id).populate('user', 'displayName').select('quizName category questions.question questions.questionOptions questions._id user').exec(function(err, quiz){
