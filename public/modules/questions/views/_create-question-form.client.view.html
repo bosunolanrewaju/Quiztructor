@@ -1,10 +1,11 @@
-<div>
+<div>{{questionArray}}
 	<ol>
 		<li data-ng-repeat="question in questionArray">
 			<h3>{{question.question}}</h3>
 			<p data-ng-repeat="option in question.questionOptions">
 				{{option}}
 			</p>
+			<a data-ng-click="removeQuestion({{$index}})" class="btn btn-danger">X</a>
 		</li>
 	</ol>
 </div>

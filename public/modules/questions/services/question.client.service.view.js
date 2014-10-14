@@ -2,9 +2,10 @@
 
 
 angular.module('questions').factory('QuestionService', ['$resource', function($resource){
-	return $resource('quizzes/:quizId/q/', 
+	return $resource('quizzes/:quizId/q/:questionId', 
 		{
-			quizId: '@quizId'
+			quizId: '@quizId',
+			questionId: '@questionId'
 		} 
 		// actions
 		);

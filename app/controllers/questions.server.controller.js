@@ -58,7 +58,7 @@ exports.retrieve = function(req, res){
 
 exports.delete = function(req, res){
     var quiz = req.quiz;
-
+    console.log(req.params);
         quiz.questions.id(req.params.questionId).remove();
         quiz.save(function(err){
             if(err){

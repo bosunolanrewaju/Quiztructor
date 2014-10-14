@@ -45,8 +45,12 @@ angular.module('questions')
 					console.log(scope.index);
 					angular.element(document.getElementById('optionDiv')).append($compile('<input type="text" name="option" data-ng-model="questionOptions[' +scope.index + ']" placeholder="option' + (scope.index + 1) + '"><input type="radio" name="optionanswer" value="{{questionOptions[' + scope.index + ']}}" data-ng-model="answer"><br>')(scope));
 				};
-				console.log(angular.element(document.getElementById('addQuestion')));
-				
+
+				scope.removeQuestion = function(index){
+					if(confirm('Are you sure you want to delete this question? This action cannot be undone')){
+						scope.questionArray.splice(index, 1);
+					}
+				};
 			}
 		};
 	})
@@ -86,6 +90,15 @@ angular.module('questions')
 						console.log(result);
 					});
 				};
+
+
+				scope.removeQuestion = function(index){
+					if(confirm('Are you sure you want to delete this question? This action cannot be undone')){
+						var question = scope.quiz.questions[index];
+						question.$remove();
+					}
+				};
+
 			}
 		};
 	});

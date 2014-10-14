@@ -34,17 +34,22 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
                         $location.path('/quiz/' + $scope.quizId);
                     }
                 });
-
-                // question.$save(function(response){
-                //     $location.path('/quiz/' + response._id);
-                //     $scope.quizName = '';
-                //     $scope.category = '';
-                // });
-
-                
             }, function(errorResponse){
                 $scope.error = errorResponse.data.message;
             });
+        };
+
+        $scope.remove = function(quiz){
+            var question = $scope.quiz.questions[this.$index];
+            console.log(question._id);
+            var paramQuizId = $stateParams.quizId;
+                QuestionService.delete({
+
+                }, {
+                    quizId: $stateParams.quizId,
+                    questionId: question._id
+                });
+                    $location.path('/quiz/' + paramQuizId);
         };
 
         // Retrieves Quiz
