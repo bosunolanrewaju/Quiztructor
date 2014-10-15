@@ -1,7 +1,7 @@
 <section data-ng-controller="QuizController" data-ng-init="listQuizzes()">
 	<ul>
 		<li ng-repeat="quiz in quizzes">
-			<a href="#!/quiz/{{quiz._id}}">{{quiz.quizName}}</a> | {{quiz.category}} - Created by {{quiz.user.displayName}}
+			<a href="#!/quiz/{{quiz._id}}">{{quiz.quizName}}</a> ({{quiz.questions.length}} questions) | {{quiz.description}} - Created by {{quiz.user.displayName}}
 		</li>
 	</ul>
 </section>

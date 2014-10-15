@@ -56,20 +56,52 @@ angular.module('questions')
 			}
 		};
 	})
-	.directive('theQuestions', function($timeout, $stateParams, ProcessQuiz){
+	.directive('theQuestions', function($timeout, $modal, ProcessQuiz, $stateParams){
 		return {
 			restrict: 'E',
 			templateUrl: 'modules/questions/views/view-question.client.view.html',
 			controller: function($scope){
-				$scope.userAnswer = '';
+				
+				$scope.markQuiz = function(){
+					$scope.userAnswerArray.push(this.userAnswer);
+
+					var result = new ProcessQuiz({
+						quizId: $stateParams.quizId,
+						userAnswer: $scope.userAnswerArray
+					});
+
+					result.$save(function(response){
+		    			$scope.response = response;
+		    			
+		    			var modalInstance = $modal.open({
+			                templateUrl: 'modules/quizzes/views/show-quiz-result.client.view.html',
+			                controller: 'ShowResultCtrl',
+			                size: 'sm',
+			                backdrop: 'static',
+			                keyboard: false,
+			                resolve: {
+			                	scores: function(){
+			                		return $scope.response ;
+			                	}
+			                }
+			            });	
+
+		    		}, function(error){
+		    			console.log(error);
+		    		});									
+				};
 			},
-			link: function(scope, element, attr){
+			link: function (scope, element, attr){
 				scope.count = 0;
+				scope.userAnswer = '';
 				scope.userAnswerArray = [];
 				
 				scope.getNextQuestion =  function(){
-					if(scope.userAnswer !== ''){
-						scope.userAnswerArray.push(scope.userAnswer);
+					console.log(this);
+					if(this.userAnswer !== ''){
+						scope.userAnswerArray.push(this.userAnswer);
+					} else {
+						console.log('empty');
 					}
 
 					$timeout(function(){
@@ -79,20 +111,13 @@ angular.module('questions')
 				};
 
 				scope.getNextQuestion(0);
-
-				scope.markQuiz = function(){
-					scope.userAnswerArray.push(scope.userAnswer);
-					var result = new ProcessQuiz({
-						quizId: $stateParams.quizId,
-						userAnswer: scope.userAnswerArray
-					});
-
-					result.$save(function(result){
-						console.log(result);
-					});
-				};
-
-
 			}
 		};
-	});
+	}).controller('ShowResultCtrl', ['$scope', '$modalInstance', 'scores', '$location', function($scope, $modalInstance, scores, $location ){
+		$scope.response = scores;
+
+		$scope.cancel = function () {
+        	$modalInstance.dismiss('cancel');
+        	$location.path('/quizzes');
+   		}; 
+	}]);

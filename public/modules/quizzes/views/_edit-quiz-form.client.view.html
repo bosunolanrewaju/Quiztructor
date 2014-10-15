@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h3 class="modal-title">Add Question Form</h3>
+</div>
+<div class="modal-body">
+	<input type="text" name="quizName" data-ng-model="quiz.quizName" placeholder="Quiz Title">
+	<input type="text" name="category" data-ng-model="quiz.category" placeholder="Category">
+	<textarea name="description" data-ng-model="quiz.description" placeholder="Description"></textarea>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" data-ng-click="postQuiz()">Submit</button>
+    <button class="btn btn-warning" data-ng-click="cancel()">Cancel</button>
+</div>

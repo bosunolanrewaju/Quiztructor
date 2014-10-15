@@ -1,7 +1,8 @@
 <section data-ng-controller="QuizController">
 	<form action="" data-ng-submit="createQuiz()">
-		<input type="text" name="quizName" data-ng-model="quizName" placeholder="Enter the quiz title">
-		<input type="text" name="category" data-ng-model="category" placeholder="What is the quiz category">
+		<input type="text" name="quizName" data-ng-model="quizName" placeholder="Quiz Title">
+		<input type="text" name="category" data-ng-model="category" placeholder="Category">
+		<textarea type="text" name="description" data-ng-model="description" placeholder="Description"></textarea>
 		<question></question>
 		<button id="quizSubmit" type="submit" name="submit" class="btn btn-primary">Create Quiz</button>
 	</form>

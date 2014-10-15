@@ -2,13 +2,10 @@
 	<div>
 		<h2>{{quiz.quizName}}</h2> 
 		<a clas data-ng-if="isAuthor" data-ng-click="removeQuiz()" class="left btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
-		<a clas data-ng-if="isAuthor" data-ng-click="eeditQuiz()" class="left btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-		<p>Quiz description</p>
-		<a class="btn btn-primary">Take Quiz Now</a>
+		<a clas data-ng-if="isAuthor" data-ng-click="editQuiz()" class="left btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+		<p>{{quiz.description}}</p>
+		<a class="btn btn-primary" data-ng-if="!isAuthor" data-ng-click="takeQuiz()" data-ng-hide="takethequiz">Take Quiz Now</a>
 			<the-questions></the-questions>
-		
-		<div data-ng-if="isAuthor">
-			<button data-ng-click="loadForm()" class="btn btn-primary">Add More Question</button>
-		</div>
+			<button data-ng-if="isAuthor" data-ng-click="loadForm()" class="btn btn-primary">Add More Question</button>
 	</div>
 </section>

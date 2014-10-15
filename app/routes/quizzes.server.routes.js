@@ -31,10 +31,6 @@ var user = require('../../app/controllers/users'),
           //  .put(questions.update)
             .delete(questions.delete);
 
-        app.route('/quizzes/:quizId/score')
-            .get(score.getScore)
-            .post(score.create);
-
         app.route('/quizzes/:quizId/process')
             .post(quizzes.processResult);
 

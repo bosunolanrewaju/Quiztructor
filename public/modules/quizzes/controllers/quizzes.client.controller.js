@@ -9,7 +9,7 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
             
             var quiz = new QuizService({
                 quizName: this.quizName,
-                category: this.category
+                description: this.description
             });
             quiz.$save(function(response){
                 $scope.quizId = response._id;
@@ -104,18 +104,23 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
         // Load edit-quiz modal form
         $scope.editQuiz = function(){
             var modalInstance = $modal.open({
-                templateUrl: 'modules/questions/views/_add-question-form.client.view.html',
-                controller: 'LoadFormCtrl',
+                templateUrl: 'modules/quizzes/views/_edit-quiz-form.client.view.html',
+                controller: 'LoadEditQuizFormCtrl',
+                size: 'sm',
                 resolve: {
                     question: function () {
                       return  {
-                            question: $scope.question,
-                            questionOptions: $scope.questionOptions,
-                            answer: $scope.answer
+                            quizName: $scope.quizName,
+                            description: $scope.description
                         };
                     }
                 }
             });
+        };
+
+        // Starts quiz
+        $scope.takeQuiz = function(){
+            $scope.takethequiz = true;
         };
 
 }]).controller('LoadFormCtrl', ['$scope', '$window', 'AddOption', '$compile', '$stateParams', 'QuestionService', '$modalInstance',  function($scope, $window, AddOption, $compile, $stateParams, QuestionService, $modalInstance){
@@ -142,4 +147,21 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
+}]).controller('LoadEditQuizFormCtrl', ['$scope', 'QuizService', '$modalInstance', '$window', '$stateParams', function($scope, QuizService, $modalInstance, $window, $stateParams){
+    $scope.quiz = QuizService.get({quizId: $stateParams.quizId}); 
+
+    $scope.postQuiz = function(){
+        var quiz = $scope.quiz;
+
+        quiz.$update(function(){
+            $window.location.reload();
+        }, function(error){
+            console.log(error);
+        });
+    };
+
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };    
 }]);

@@ -38,6 +38,11 @@ var QuizSchema = new Schema({
 		trim: true,
 		required: 'Quiz title cannot be empty',
 	},
+	description: {
+		type: String,
+		default: '',
+		trim: true
+	},
 	category: {
 		type: String,
 		default: 'Uncategorized',
