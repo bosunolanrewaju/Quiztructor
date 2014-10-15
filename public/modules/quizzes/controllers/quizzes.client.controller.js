@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService', '$stateParams', '$location', 'Authentication', 'QuestionService', function($scope, QuizService, $stateParams, $location, Authentication, QuestionService){
+angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService', '$stateParams', '$location', 'Authentication', 'QuestionService', '$modal', function($scope, QuizService, $stateParams, $location, Authentication, QuestionService, $modal){
     $scope.user = Authentication.user;
 
         // Create Quiz Function
@@ -39,19 +39,6 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
             });
         };
 
-        $scope.remove = function(quiz){
-            var question = $scope.quiz.questions[this.$index];
-            console.log(question._id);
-            var paramQuizId = $stateParams.quizId;
-                QuestionService.delete({
-
-                }, {
-                    quizId: $stateParams.quizId,
-                    questionId: question._id
-                });
-                    $location.path('/quiz/' + paramQuizId);
-        };
-
         // Retrieves Quiz
         $scope.getQuiz = function(){
             $scope.quiz = QuizService.get({ quizId: $stateParams.quizId },
@@ -65,9 +52,94 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
                 });            
         };
 
-        // Retrieves Quiz
+        // Retrieves Quizzes
         $scope.listQuizzes = function(){
             $scope.quizzes = QuizService.query();
         };
 
+        // Removes quiz and deletes from schema
+        $scope.removeQuiz =  function(){
+            if(confirm('Are you sure you want to delete this quiz? This action cannot be undone!')){
+                $scope.quiz.$remove(function(){
+                    $location.path('quizzes');
+                });
+            }
+        };
+
+        // Removes question from quiz and also deletes from schema
+        $scope.remove = function(quiz){
+            if(confirm('Are you sure you want to delete this question? This action cannot be undone!')){
+                var question = $scope.quiz.questions[this.$index];
+                $scope.quiz.questions.splice(this.$index, 1);
+                QuestionService.delete({
+                    quizId: $stateParams.quizId,
+                    questionId: question._id
+                }, {
+                    
+                }, function(response){
+                    console.log('/quiz/' + response._id);
+                }, function(error){
+                    console.log(error);
+                });
+            }        
+        };
+
+        // Load add-question modal form
+        $scope.loadForm = function(){
+            var modalInstance = $modal.open({
+                templateUrl: 'modules/questions/views/_add-question-form.client.view.html',
+                controller: 'LoadFormCtrl',
+                resolve: {
+                    question: function () {
+                      return  {
+                            question: $scope.question,
+                            questionOptions: $scope.questionOptions,
+                            answer: $scope.answer
+                        };
+                    }
+                }
+            });
+        };
+
+        // Load edit-quiz modal form
+        $scope.editQuiz = function(){
+            var modalInstance = $modal.open({
+                templateUrl: 'modules/questions/views/_add-question-form.client.view.html',
+                controller: 'LoadFormCtrl',
+                resolve: {
+                    question: function () {
+                      return  {
+                            question: $scope.question,
+                            questionOptions: $scope.questionOptions,
+                            answer: $scope.answer
+                        };
+                    }
+                }
+            });
+        };
+
+}]).controller('LoadFormCtrl', ['$scope', '$window', 'AddOption', '$compile', '$stateParams', 'QuestionService', '$modalInstance',  function($scope, $window, AddOption, $compile, $stateParams, QuestionService, $modalInstance){
+    $scope.index = 1;
+    $scope.addOption = function(){
+        return AddOption.addOption($scope, $compile);
+    };
+
+    $scope.questionOptions = [];
+
+    $scope.postQuestion = function(){
+
+        var questionObj =  new QuestionService({
+            quizId: $stateParams.quizId,
+            question: $scope.question,
+            questionOptions: $scope.questionOptions,
+            answer: $scope.answer
+        });
+        questionObj.$save(function(response){
+            $window.location.reload();
+        });
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
 }]);

@@ -67,6 +67,7 @@ exports.delete = function(req, res){
                 });
             } else {
                 res.jsonp(quiz);
+                console.log(res);
             }
         });
 };

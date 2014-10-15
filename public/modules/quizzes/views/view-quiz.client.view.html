@@ -1,12 +1,14 @@
 <section data-ng-controller="QuizController" data-ng-init="getQuiz()">
 	<div>
-		<h2>{{quiz.quizName}}</h2>
+		<h2>{{quiz.quizName}}</h2> 
+		<a clas data-ng-if="isAuthor" data-ng-click="removeQuiz()" class="left btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+		<a clas data-ng-if="isAuthor" data-ng-click="eeditQuiz()" class="left btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
 		<p>Quiz description</p>
 		<a class="btn btn-primary">Take Quiz Now</a>
 			<the-questions></the-questions>
 		
 		<div data-ng-if="isAuthor">
-			<button class="btn btn-primary">Add Question</button>
+			<button data-ng-click="loadForm()" class="btn btn-primary">Add More Question</button>
 		</div>
 	</div>
 </section>

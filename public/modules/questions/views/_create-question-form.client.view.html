@@ -13,9 +13,9 @@
 {{questionOptions}}
 {{answer}}
 	<div id="optionDiv">
-		<input type="text" name="option" data-ng-model="questionOptions[0]" placeholder="option1">
+		<input type="text" name="option" data-ng-model="questionOptions[0]" placeholder="option 1">
 	<input type="radio" name="optionanswer" value="{{questionOptions[0]}}" data-ng-model="answer"><br>
-	<input type="text" name="option" data-ng-model="questionOptions[1]" placeholder="option2"><input type="radio" name="optionanswer" value="{{questionOptions[1]}}" data-ng-model="answer"><br>
+	<input type="text" name="option" data-ng-model="questionOptions[1]" placeholder="option 2"><input type="radio" name="optionanswer" value="{{questionOptions[1]}}" data-ng-model="answer"><br>
 	</div>
-	<a class="btn btn-primary" data-ng-click="addOption()">+</a>
+	<a class="btn btn-primary" data-ng-click="addOption()"><i class="glyphicon glyphicon-plus"></i></a>
 	<a class="btn btn-primary" data-ng-click="addQuestion()">Add Question</button>

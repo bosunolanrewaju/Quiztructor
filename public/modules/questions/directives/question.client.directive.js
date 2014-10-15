@@ -10,7 +10,7 @@ angular.module('questions')
 			}
 		};
 	})
-	.directive('questionForm', function($compile){
+	.directive('questionForm', function($compile, AddOption){
 		return{
 			restrict: 'E',
 			templateUrl: 'modules/questions/views/_create-question-form.client.view.html',
@@ -26,26 +26,28 @@ angular.module('questions')
     	            }
     	        });
 				$scope.questionArray = [];
+				$scope.answer = '';
 
         	    $scope.addQuestion = function(){
-        	    	var question = {
-        	    		question: $scope.question,
-        	    		questionOptions: $scope.questionOptions,
-        	    		answer: $scope.answer
-        	    	};
-        	    	$scope.questionArray.push(question);
-        	    	$scope.question = '';
-        	    	$scope.questionOptions = [];
-        	    	$scope.answer = '';
+        	    	if($scope.answer !== ''){
+	        	    	var question = {
+	        	    		question: $scope.question,
+	        	    		questionOptions: $scope.questionOptions,
+	        	    		answer: $scope.answer
+	        	    	};
+	        	    	$scope.questionArray.push(question);
+	        	    	$scope.question = '';
+	        	    	$scope.questionOptions = [];
+	        	    	$scope.answer = '';
+        	    	} else {
+        	    		alert('You have to select an answer');
+        	    	}
         	    };
 			},
 			link: function(scope, element, attr){
 				scope.addOption = function(){
-					scope.index++;
-					console.log(scope.index);
-					angular.element(document.getElementById('optionDiv')).append($compile('<input type="text" name="option" data-ng-model="questionOptions[' +scope.index + ']" placeholder="option' + (scope.index + 1) + '"><input type="radio" name="optionanswer" value="{{questionOptions[' + scope.index + ']}}" data-ng-model="answer"><br>')(scope));
+					return AddOption.addOption(scope, $compile);
 				};
-
 				scope.removeQuestion = function(index){
 					if(confirm('Are you sure you want to delete this question? This action cannot be undone')){
 						scope.questionArray.splice(index, 1);
@@ -73,7 +75,6 @@ angular.module('questions')
 					$timeout(function(){
 						scope.currentQuestion = scope.quiz.questions[scope.count];
 						scope.count++;
-						console.log(scope.userAnswer);
 					}, 500);
 				};
 
@@ -91,13 +92,6 @@ angular.module('questions')
 					});
 				};
 
-
-				scope.removeQuestion = function(index){
-					if(confirm('Are you sure you want to delete this question? This action cannot be undone')){
-						var question = scope.quiz.questions[index];
-						question.$remove();
-					}
-				};
 
 			}
 		};
