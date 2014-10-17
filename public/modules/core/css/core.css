@@ -102,11 +102,11 @@ footer {
 
 .navbar-inverse {
 	border-bottom: 1px solid rgba(255,255, 255, .4);
-	background: -webkit-linear-gradient(to bottom, rgb(153, 177, 255), rgb(184, 217, 233))
-	background: -moz-linear-gradient(to bottom, rgb(153, 177, 255), rgb(184, 217, 233))
-	background: -ms-linear-gradient(to bottom, rgb(153, 177, 255), rgb(184, 217, 233))
-	background: -o-linear-gradient(to bottom, rgb(153, 177, 255), rgb(184, 217, 233))
-	background: linear-gradient(to bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+	background: -webkit-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+	background: -moz-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+	background: -ms-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+	background: -o-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+	background: linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
 }
 
 .navbar-nav {

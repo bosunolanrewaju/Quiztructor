@@ -84,12 +84,9 @@ exports.processResult = function(req, res){
 
     Quiz.findById(id).select('questions.answer').exec(function(err, ans){
         if(userAnswers.length !== ans.questions.length){
-            console.log('not passed');
             return new Error('Something went wrong is processing your result');
         } else {
-            console.log('passed');
             for(var i = 0; i < userAnswers.length; i++){
-                console.log(userAnswers[i] + '-' + ans.questions[i].answer);
                 if(userAnswers[i] === ans.questions[i].answer){
                     correct++;
                 }
@@ -99,7 +96,6 @@ exports.processResult = function(req, res){
                 correctAnswer: correct,
                 totalQuestion: userAnswers.length
             };
-            console.log(response);
             res.jsonp(response);
         }
     });
