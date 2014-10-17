@@ -28,11 +28,12 @@ html, body {
 }
 
 .wrapper {
-	min-height: 80%;
+	min-height: 100%;
 }
 
 /*Main body*/
 body {
+	height: 93.5%;
 	background-color: rgb(252,252,252);
 	font-family: 'Open Sans', 'Century Gothic', san-serif;
 	font-size: 17px;
@@ -44,6 +45,7 @@ h1, h2, h3, h4 {
 }
 
 footer {
+	margin-top: -100px;
 	text-align: center;
 	color: white;
 	font-size: 0.9em;
@@ -57,6 +59,7 @@ footer {
 
 .form-group {
 	margin: 10px 0px;
+	overflow: auto;
 }
 
 .copy {
@@ -102,11 +105,11 @@ footer {
 
 .navbar-inverse {
 	border-bottom: 1px solid rgba(255,255, 255, .4);
-	background: -webkit-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
-	background: -moz-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
-	background: -ms-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
-	background: -o-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
-	background: linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+	background: -webkit-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233));
+	background: -moz-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233));
+	background: -ms-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233));
+	background: -o-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233));
+	background: linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233));
 }
 
 .navbar-nav {
