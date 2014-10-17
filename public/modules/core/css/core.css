@@ -48,7 +48,11 @@ footer {
 	color: white;
 	font-size: 0.9em;
 	height: 90px;
-	background: -webkit-linear-gradient(bottom, rgba(55, 55, 155, 0.6), rgba(55, 55, 155, 0.6)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: -webkit-linear-gradient(to bottom, rgba(55, 55, 155, 0.6), rgba(55, 55, 155, 0.6)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: -moz-linear-gradient(to bottom, rgba(55, 55, 155, 0.6), rgba(55, 55, 155, 0.6)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: -ms-linear-gradient(to bottom, rgba(55, 55, 155, 0.6), rgba(55, 55, 155, 0.6)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: -o-linear-gradient(to bottom, rgba(55, 55, 155, 0.6), rgba(55, 55, 155, 0.6)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: linear-gradient(to bottom, rgba(55, 55, 155, 0.6), rgba(55, 55, 155, 0.6)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
 }
 
 .form-group {
@@ -68,11 +72,11 @@ footer {
 
 
 .body {
-	background: -webkit-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
-	background: -moz-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
-	background: -ms-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
-	background: -o-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
-	background: linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: -webkit-linear-gradient(to bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed !important;
+	background: -moz-linear-gradient(to bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: -ms-linear-gradient(to bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: -o-linear-gradient(to bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: linear-gradient(to bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
 	width: 100%;
 	height: 100%;
 	position: absolute;
@@ -98,7 +102,11 @@ footer {
 
 .navbar-inverse {
 	border-bottom: 1px solid rgba(255,255, 255, .4);
-	background: -webkit-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+	background: -webkit-linear-gradient(to bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+	background: -moz-linear-gradient(to bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+	background: -ms-linear-gradient(to bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+	background: -o-linear-gradient(to bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+	background: linear-gradient(to bottom, rgb(153, 177, 255), rgb(184, 217, 233))
 }
 
 .navbar-nav {
@@ -126,11 +134,11 @@ footer {
 /* Homepage Banner */
 .home-banner {
 	width: 100%;
-	background: url('/modules/core/img/brand/quiztructor.png') no-repeat 80% 60% fixed, -webkit-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
-	background: url('/modules/core/img/brand/quiztructor.png') no-repeat 80% 60% fixed, -moz-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
-	background: url('/modules/core/img/brand/quiztructor.png') no-repeat 80% 60% fixed, -ms-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
-	background: url('/modules/core/img/brand/quiztructor.png') no-repeat 80% 60% fixed, -o-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
-	background: url('/modules/core/img/brand/quiztructor.png') no-repeat 80% 60% fixed, linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: url('/modules/core/img/brand/quiztructor.png') no-repeat 80% 60% fixed, -webkit-linear-gradient(to bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('./modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: url('/modules/core/img/brand/quiztructor.png') no-repeat 80% 60% fixed, -moz-linear-gradient(to bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: url('/modules/core/img/brand/quiztructor.png') no-repeat 80% 60% fixed, -ms-linear-gradient(to bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: url('/modules/core/img/brand/quiztructor.png') no-repeat 80% 60% fixed, -o-linear-gradient(to bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: url('/modules/core/img/brand/quiztructor.png') no-repeat 80% 60% fixed, linear-gradient(to bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('/modules/core/img/brand/home-bg.jpg') no-repeat center center fixed;
 }
 
 .how-it-works, .create-test {
@@ -253,13 +261,21 @@ QUIZZES page
 }
 
 .quiz-list:hover {
-	background: -webkit-linear-gradient(bottom, rgb(245, 245, 245), rgb(252, 252, 252))
+	background: -webkit-linear-gradient(to bottom, rgb(245, 245, 245), rgb(252, 252, 252));
+	background: -moz-linear-gradient(to bottom, rgb(245, 245, 245), rgb(252, 252, 252));
+	background: -ms-linear-gradient(to bottom, rgb(245, 245, 245), rgb(252, 252, 252));
+	background: -o-linear-gradient(to bottom, rgb(245, 245, 245), rgb(252, 252, 252));
+	background: linear-gradient(to bottom, rgb(245, 245, 245), rgb(252, 252, 252));
 }
 
 .quiz-list {
 	border-bottom: 1px solid #eee;
 	padding: 10px 20px;
-	background: -webkit-linear-gradient(bottom, rgb(248, 248, 248), rgb(252, 252, 252))
+	background: -webkit-linear-gradient(to bottom, rgb(248, 248, 248), rgb(252, 252, 252));
+	background: -moz-linear-gradient(to bottom, rgb(248, 248, 248), rgb(252, 252, 252));
+	background: -ms-linear-gradient(to bottom, rgb(248, 248, 248), rgb(252, 252, 252));
+	background: -o-linear-gradient(to bottom, rgb(248, 248, 248), rgb(252, 252, 252));
+	background: linear-gradient(to bottom, rgb(248, 248, 248), rgb(252, 252, 252));
 }
 
 .quiz-list h3 {
