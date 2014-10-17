@@ -94,14 +94,21 @@ angular.module('questions')
 			link: function (scope, element, attr){
 				scope.count = 0;
 				scope.userAnswer = '';
+				scope.done = false;
 				scope.userAnswerArray = [];
 				
+				scope.selected = function(){
+					if(scope.count === scope.quiz.questions.length){
+						scope.done = true;
+					}
+				};
+				
 				scope.getNextQuestion =  function(){
-					console.log(this);
+
 					if(this.userAnswer !== ''){
 						scope.userAnswerArray.push(this.userAnswer);
 					} else {
-						console.log('empty');
+
 					}
 
 					$timeout(function(){

@@ -1,21 +1,69 @@
-<div>{{questionArray}}
+<h2>Questions</h2>
+<div data-ng-if="questionArray == ''">
+	No question added yet
+</div>
+<div class="question">
 	<ol>
 		<li data-ng-repeat="question in questionArray">
-			<h3>{{question.question}}</h3>
+			<h3>{{question.question}}<a data-ng-click="removeQuestion({{$index}})" class="pull-right btn btn-danger">X</a></h3>
 			<p data-ng-repeat="option in question.questionOptions">
 				{{option}}
 			</p>
-			<a data-ng-click="removeQuestion({{$index}})" class="btn btn-danger">X</a>
+			
 		</li>
 	</ol>
 </div>
-<br><input id="question" type="text" name="question" data-ng-model="question" placeholder="Enter Question here"><br>
-{{questionOptions}}
-{{answer}}
-	<div id="optionDiv">
-		<input type="text" name="option" data-ng-model="questionOptions[0]" placeholder="option 1">
-	<input type="radio" name="optionanswer" value="{{questionOptions[0]}}" data-ng-model="answer"><br>
-	<input type="text" name="option" data-ng-model="questionOptions[1]" placeholder="option 2"><input type="radio" name="optionanswer" value="{{questionOptions[1]}}" data-ng-model="answer"><br>
-	</div>
-	<a class="btn btn-primary" data-ng-click="addOption()"><i class="glyphicon glyphicon-plus"></i></a>
-	<a class="btn btn-primary" data-ng-click="addQuestion()">Add Question</button>
+<div class="well">
+<fieldset>
+	<legend>Add Questions</legend>
+	<input class="form-control" id="question" type="text" name="question" data-ng-model="question" placeholder="Enter Question here"><br>
+		<table class="col-sm-10" id="optionDiv">
+			<thead>
+				<tr>
+					<td>
+						Options
+					</td>
+					<td>
+						Select Answer
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<colgroup span="2">
+					<col class="col-sm-8">
+					<col>
+				</colgroup>
+				<tr>
+					<td>
+						<div class="form-group">
+					      <div class="col-md-12">
+					        <input class="form-control" type="text" name="option" data-ng-model="questionOptions[0]" placeholder="option 1">
+					      </div>
+					    </div>
+				    </td>
+				    <td> 
+				    	<input type="radio" name="optionanswer" value="{{questionOptions[0]}}" data-ng-model="answer"><br>
+				    </td>
+				</tr>
+				<tr>
+					<td>
+						<div class="form-group">
+					      <div class="col-md-12">
+					        <input class="form-control" type="text" name="option" data-ng-model="questionOptions[1]" placeholder="option 2"> 
+					      </div>
+					    </div>
+					</td>
+					<td>
+						<input type="radio" name="optionanswer" value="{{questionOptions[1]}}" data-ng-model="answer"><br>
+					</td> 
+				</tr>
+			</tbody>
+		</table>
+		<div class="col-sm-10">
+			<a class="btn btn-info btn-sm" data-ng-click="addOption()"><i class="glyphicon glyphicon-plus"></i> Add more options</a>
+		</div>
+		<div class="col-sm-12" style="margin:40px 0px; text-align:center">
+			<a class="btn btn-success btn-lg" data-ng-click="addQuestion()">Add Question</a>
+		</div>
+	</fieldset>
+</div>

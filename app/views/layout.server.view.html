@@ -31,6 +31,8 @@
 
 	<!-- Fav Icon -->
 	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
 	<!--Application CSS Files-->
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
@@ -43,27 +45,32 @@
 </head>
 
 <body class="ng-cloak">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-	<section class="content">
-		<section class="container">
-			{% block content %}{% endblock %}
+	<div class="wrapper">
+		<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+		<section class="content">
+			<section class="container">
+				{% block content %}{% endblock %}
+			</section>
 		</section>
-	</section>
 
-	<!--Embedding The User Object-->
-	<script type="text/javascript">
-		var user = {{ user | json | safe }};
-	</script>
+		<!--Embedding The User Object-->
+		<script type="text/javascript">
+			var user = {{ user | json | safe }};
+		</script>
 
-	<!--Application JavaScript Files-->
-	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
-	{% endfor %} 
+		<!--Application JavaScript Files-->
+		{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
+		{% endfor %} 
 
-	{% if process.env.NODE_ENV === 'development' %}
-	<!--Livereload script rendered -->
-	<script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
+		{% if process.env.NODE_ENV === 'development' %}
+		<!--Livereload script rendered -->
+		<script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
 
-	{% endif %}
+		{% endif %}
+	</div>
+		<footer>
+			<div class="copy">&copy; 2014 Andela Institute</div>
+		</footer>
 </body>
 
 </html>

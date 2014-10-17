@@ -1,3 +1,7 @@
+/******************************************
+	DEFAULT STYLE
+*******************************************/
+
 .content {
 	margin-top: 50px;
 }
@@ -13,3 +17,303 @@
 .ng-valid.ng-dirty{
     border-color:#78FA89;
 }
+
+/******************************************
+*******************************************
+	CUSTOM STYLE
+*******************************************
+*******************************************/
+html, body {
+	height: 100%;
+}
+
+.wrapper {
+	min-height: 80%;
+}
+
+/*Main body*/
+body {
+	background-color: rgb(252,252,252);
+	font-family: 'Open Sans', 'Century Gothic', san-serif;
+	font-size: 17px;
+	font-weight: 300;
+}
+
+h1, h2, h3, h4 {
+	font-family: Montserrat, Georgia;
+}
+
+footer {
+	text-align: center;
+	color: white;
+	font-size: 0.9em;
+	height: 90px;
+	background: -webkit-linear-gradient(bottom, rgba(55, 55, 155, 0.6), rgba(55, 55, 155, 0.6)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+}
+
+.form-group {
+	margin: 10px 0px;
+}
+
+.copy {
+	padding: 40px 0 30px 0;
+}
+
+.center {
+	margin: 20px auto;
+	display: block;
+	float: none;
+	text-align: center;
+}
+
+
+.body {
+	background: -webkit-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: -moz-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: -ms-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: -o-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -100000;
+}
+
+.navbar-home {
+
+}
+
+
+.container {
+	width: 100%;
+	padding: 0px;
+}
+
+
+/* Bootstrap Navbar menu override */
+.header-nav {
+	max-width: 1170px;
+	margin: 0 auto;
+}
+
+.navbar-inverse {
+	border-bottom: 1px solid rgba(255,255, 255, .4);
+	background: -webkit-linear-gradient(bottom, rgb(153, 177, 255), rgb(184, 217, 233))
+}
+
+.navbar-nav {
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+.navbar-nav > li > a {
+	margin: 0px 3px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	color: white !important;
+	text-shadow: none !important;
+}
+
+.navbar-nav > li > a:hover {
+	background-color: rgba(100,80,80,.7) !important;
+}
+
+.navbar-brand {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/* Homepage Banner */
+.home-banner {
+	width: 100%;
+	background: url('../img/brand/quiztructor.png') no-repeat 80% 60% fixed, -webkit-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: url('../img/brand/quiztructor.png') no-repeat 80% 60% fixed, -moz-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: url('../img/brand/quiztructor.png') no-repeat 80% 60% fixed, -ms-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: url('../img/brand/quiztructor.png') no-repeat 80% 60% fixed, -o-linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+	background: url('../img/brand/quiztructor.png') no-repeat 80% 60% fixed, linear-gradient(bottom, rgba(55, 55, 155, 0.4), rgba(55, 55, 155, 0.4)), url('../img/brand/home-bg.jpg') no-repeat center center fixed;
+}
+
+.how-it-works, .create-test {
+	width: 100%;
+	padding: 20px 0px;
+	background-color: rgb(255, 248, 179);
+}
+
+.how-it-works h2, .how-it-works h3 {
+	text-align: center;
+	font-size: 2.5em;
+}
+
+.how-it-works h3{
+	font-size: 1.4em;
+	margin-top: 40px;
+}
+
+.how-it-works span {
+	display: block;
+	margin: 30px auto;
+	width: 65%;
+	text-align: center;
+}
+
+.create-test {
+	padding: 12vw 0px;
+	background-color: rgb(36, 36, 78);
+	text-align: center;
+	float: left;
+	font-size: 2.2em;
+	font-family: Montserrat, Georgia;
+}
+
+a.create-quiz {
+	padding: 20px 60px;
+	background-color: rgba(255, 130, 135, 0);
+	border: 3px solid rgb(137, 134, 255);
+	color: rgb(137, 134, 255);
+}
+
+a.create-quiz:hover {
+	text-decoration: none;
+	background-color: rgb(137, 134, 255);
+	color: rgb(36, 36, 78);
+}
+
+.createquiz {
+	font-family: Montserrat, Georgia;
+	padding: 20px 40px;
+	background-color: rgb(11, 11, 104);
+	border-radius: 10px;
+	color: rgb(255, 255, 255);
+	border: none;
+}
+
+.createquiz:hover {
+	text-decoration: none;
+	color: white;
+}
+
+button.createquiz:active {
+	outline: none;
+	border: none;
+}
+
+/*Logo*/
+.img-responsive {
+	max-width: 280px;
+}
+
+.img-responsive img {
+	width: 100%;
+}
+
+
+
+/******************************
+QUIZZES page
+*******************************/
+.quizzes, .view-quiz {
+	margin: 7vw auto 3vw;
+	max-width: 80%;
+	border: 1px solid #ccc;
+	color: rgb(100,100,100);
+}
+
+.quizzes > h3, .view-quiz h3 {
+	font-size: 2em;
+	padding: 20px;
+	margin: 0px;
+	background-color: #ddf;
+}
+
+.question h3 {
+	background-color: rgb(245,245,245);
+	font-size: 1.5em;
+	border-radius: 0;
+	margin: 10px 0px;
+}
+
+
+.question ol {
+	margin-bottom: 30px;
+	margin-left: 20px;
+}
+
+.quizzes ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.quizzes h3 a {
+	color: rgb(100,100,100);
+}
+
+.quiz-list:first-child {
+	border-top: 1px solid #eee;
+}
+
+.quiz-list:hover {
+	background: -webkit-linear-gradient(bottom, rgb(245, 245, 245), rgb(252, 252, 252))
+}
+
+.quiz-list {
+	border-bottom: 1px solid #eee;
+	padding: 10px 20px;
+	background: -webkit-linear-gradient(bottom, rgb(248, 248, 248), rgb(252, 252, 252))
+}
+
+.quiz-list h3 {
+	padding: 0px;
+}
+
+.quiz-list a:hover {
+	text-decoration: none;
+}
+
+/* View Quiz Page */
+.view-quiz h3 > a.btn{
+	margin-left: 5px;
+}
+
+.view-quiz span{
+	display: block;
+	width: 80%;
+	margin-left: 20px;
+	padding: 20px 0px;
+}
+
+
+
+/*Table */
+#optionDiv tr td:last-child {
+	text-align: center;
+	background-color: rgb(245,245,245);
+}
+
+
+/*************************
+Edit Profile
+*/
+
+.editprofile, .sign-in, .sign-up, .forgotpassword {
+	display: block;
+	background: url('../img/brand/editprofile.jpg');
+	border-radius: 50%;
+	width: 250px;
+	border: 2px solid #bbb;
+	height: 250px;
+	margin: 0 auto;
+}
+
+.sign-in {
+	background: url('../img/brand/signin.jpg');
+}
+
+.sign-up {
+	background: url('../img/brand/signup.jpg');
+}
+
+.forgotpassword {
+	background: url('../img/brand/forgotpassword.jpg');
+}
+

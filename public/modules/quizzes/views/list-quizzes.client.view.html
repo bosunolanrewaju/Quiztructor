@@ -1,7 +1,10 @@
-<section data-ng-controller="QuizController" data-ng-init="listQuizzes()">
+<section class="quizzes" data-ng-controller="QuizController" data-ng-init="listQuizzes()">
+	<h3>All Quizzes</h3>
 	<ul>
-		<li ng-repeat="quiz in quizzes">
-			<a href="#!/quiz/{{quiz._id}}">{{quiz.quizName}}</a> ({{quiz.questions.length}} questions) | {{quiz.description}} - Created by {{quiz.user.displayName}}
+		<li class="quiz-list clearfix" ng-repeat="quiz in quizzes">
+			<h3><a href="#!/quiz/{{quiz._id}}">{{quiz.quizName}}</a></h3> ({{quiz.questions.length}} Questions)
+			<a href="#!/quiz/{{quiz._id}}" class="pull-right btn btn-default" data-ng-if="user._id === quiz.user._id">Edit <span class="glyphicon glyphicon-pencil"></span></a>
+			<a href="#!/quiz/{{quiz._id}}" class="pull-right btn btn-success" data-ng-if="user._id !== quiz.user._id">Take Quiz</a>
 		</li>
 	</ul>
 </section>

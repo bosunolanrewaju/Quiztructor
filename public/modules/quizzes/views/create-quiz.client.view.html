@@ -1,10 +1,34 @@
-<section data-ng-controller="QuizController">
-	<form action="" data-ng-submit="createQuiz()">
-		<input type="text" name="quizName" data-ng-model="quizName" placeholder="Quiz Title">
-		<input type="text" name="category" data-ng-model="category" placeholder="Category">
-		<textarea type="text" name="description" data-ng-model="description" placeholder="Description"></textarea>
-		<question></question>
-		<button id="quizSubmit" type="submit" name="submit" class="btn btn-primary">Create Quiz</button>
-	</form>
+<section class="view-quiz clearfix" data-ng-controller="QuizController">
+<h3>Create Your Own Quiz</h3>
+		<form data-ng-show="user._id" class="clearfixr" action="" data-ng-submit="createQuiz()">
+	        <div class="form-group">              
+	          <div class="col-md-8">
+	            <input class="form-control" type="text" name="quizName" data-ng-model="quizName" placeholder="Quiz Title">
+	          </div>
+	        </div>    
+	        <div class="form-group">
+	          <div class="col-md-8">
+	            <input class="form-control" type="text" name="category" data-ng-model="category" placeholder="Category">
+	          </div>
+	        </div> 
 
+	        <div class="form-group">
+	          <div class="col-md-8">
+	            <textarea class="form-control" type="text" name="description" rows="4" data-ng-model="description" placeholder="Description"></textarea>
+	          </div>
+	        </div>   
+	        <div class="col-sm-8">
+	        	<question></question>
+	        </div>
+	        
+			
+	        <div class="form-group">
+	          <div class="col-md-12" style="margin: 30px 0; text-align:center">
+	            <button id="quizSubmit" type="submit" name="submit" class="createquiz">Create Quiz</button>
+	          </div>
+	        </div>
+		</form>
+		<div class="alert center col-sm-8 alert-info" data-ng-hide="user._id">
+			Oops! You have to <a href="/#!/signin">sign in</a> or <a href="/#!/signup">sign up</a> to create a quiz
+		</div>
 </section>

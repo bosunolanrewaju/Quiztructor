@@ -1,23 +1,23 @@
-<section  data-ng-show="takethequiz" data-ng-if="!isAuthor">
+<section class="question clearfix"  data-ng-show="takethequiz" data-ng-if="!isAuthor">
 	<h3>{{currentQuestion.question}}</h3>
-	<ol type="A">
+	<ol class="col-sm-8" type="A">
 		<li class="well" data-ng-repeat="option in currentQuestion.questionOptions">			
-			<input id="option_{{currentQuestion._id}}_{{$index + 1}}" type="radio" name="a{{currentQuestion._id}}" value="{{option}}" data-ng-model="$parent.userAnswer">
+			<input id="option_{{currentQuestion._id}}_{{$index + 1}}" type="radio" name="a{{currentQuestion._id}}" value="{{option}}" data-ng-model="$parent.userAnswer" data-ng-change="selected()">
 			<label for="option_{{currentQuestion._id}}_{{$index + 1}}">{{option}}</label>
 		</li>
 	</ol>
-	<a class="btn btn-primary" data-ng-click="getNextQuestion()" data-ng-disabled="userAnswer === ''" data-ng-hide="count === quiz.questions.length">Submit & Proceed</a>
-	<button type="submit" data-ng-show="count === quiz.questions.length" data-ng-click="markQuiz()">Submit Quiz</button>
+	<a class="btn btn-primary createquiz" data-ng-click="getNextQuestion()" data-ng-disabled="userAnswer == '' && done == false" data-ng-hide="count === quiz.questions.length">Submit & Proceed</a>
+	<button class="btn btn-success createquiz" type="submit" data-ng-show="count === quiz.questions.length" data-ng-click="markQuiz()" data-ng-disabled="done == false">Submit Quiz</button>
 </section>
-<section data-ng-if="isAuthor">
+<section class="question" data-ng-if="isAuthor">
 	<div data-ng-repeat="currentQuestion in quiz.questions">
-		<h3>{{currentQuestion.question}}</h3>
+		<h3 class="clearfix"><span class="col-sm-10">{{currentQuestion.question}}</span>
+			<a data-ng-click="remove()" class="pull-right btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+		</h3>
 		<ol type="A">
 			<li data-ng-repeat="option in currentQuestion.questionOptions">			
 				<label for="option_{{currentQuestion._id}}_{{$index + 1}}">{{option}}</label>
 			</li>
 		</ol>
-		<a data-ng-click="remove()" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
-		<button type="submit" data-ng-show="count === quiz.questions.length" data-ng-click="">Save Quiz</button>
 	</div>
 </section>

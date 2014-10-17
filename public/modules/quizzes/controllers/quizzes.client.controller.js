@@ -44,9 +44,12 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
             $scope.quiz = QuizService.get({ quizId: $stateParams.quizId },
                 function(response){
                     // Check if curent user is the quiz author
-                    if($scope.quiz.user._id === $scope.user._id){
-                        $scope.isAuthor = true;
+                    if($scope.quiz.user && $scope.user){
+                        if($scope.quiz.user._id === $scope.user._id){
+                            $scope.isAuthor = true;
+                        }
                     }
+                    
                 }, function(err){
                     console.log(err);
                 });            
@@ -77,9 +80,9 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
                 }, {
                     
                 }, function(response){
-                    console.log('/quiz/' + response._id);
+
                 }, function(error){
-                    console.log(error);
+
                 });
             }        
         };
@@ -106,7 +109,7 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
             var modalInstance = $modal.open({
                 templateUrl: 'modules/quizzes/views/_edit-quiz-form.client.view.html',
                 controller: 'LoadEditQuizFormCtrl',
-                size: 'sm',
+                size: '',
                 resolve: {
                     question: function () {
                       return  {
@@ -156,7 +159,7 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
         quiz.$update(function(){
             $window.location.reload();
         }, function(error){
-            console.log(error);
+            
         });
     };
 

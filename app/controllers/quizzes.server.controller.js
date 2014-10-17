@@ -30,7 +30,7 @@ exports.create = function(req, res, next){
 };
 
 exports.list = function(req, res){
-    Quiz.find().populate('user', 'displayName').select('quizName description questions _id user').exec(function(err, Quizzes){
+    Quiz.find().populate('user', 'displayName').select('quizName category description questions _id user').exec(function(err, Quizzes){
         if(err){
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -107,7 +107,7 @@ exports.processResult = function(req, res){
 
 // Middleware for fetching quiz by findById
 exports.fetchById = function(req, res, next, id){
-    Quiz.findById(id).populate('user', 'displayName').select('quizName description questions.question questions.questionOptions questions._id user').exec(function(err, quiz){
+    Quiz.findById(id).populate('user', 'displayName').select('quizName category description questions.question questions.questionOptions questions._id user').exec(function(err, quiz){
         if(err) return next(err);
         if(!quiz) return next(new Error('No quiz found with the id: ' + id));
         req.quiz = quiz;
