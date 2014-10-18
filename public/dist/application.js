@@ -90,7 +90,8 @@ angular.module('core').controller('HomeController', [
   '$scope',
   'Authentication',
   '$window',
-  function ($scope, Authentication, $window) {
+  '$location',
+  function ($scope, Authentication, $window, $location) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
     // Gets the height of the screen
@@ -257,7 +258,7 @@ angular.module('questions').directive('question', function () {
           $scope.questionOptions = [];
           $scope.$watch(function () {
             for (var i = 0; i < $scope.questionOptions.length; i++) {
-              if ($scope.questionOptions[i] === '') {
+              if ($scope.questionOptions[i] === undefined) {
                 $scope.questionOptions.splice(i, 1);
               }
             }
@@ -573,7 +574,7 @@ angular.module('quizzes').factory('QuizService', [
     addOption: function (scope, compile) {
       scope.index++;
       console.log(scope.index);
-      angular.element(document.getElementById('optionDiv')).append(compile('<tr><td><div class="form-group"><div class="col-md-12"><input class="form-control" type="text" name="option" data-ng-model="questionOptions[' + scope.index + ']" placeholder="option ' + (scope.index + 1) + '"></div></div></td><td><input type="radio" name="optionanswer" value="{{questionOptions[' + scope.index + ']}}" data-ng-model="answer"><br></td></tr>')(scope));
+      angular.element(document.getElementById('optionDiv')).append(compile('<tr><td><div class="form-group"><div class="col-md-12"><input class="form-control" type="text" name="option" data-ng-model="questionOptions[' + scope.index + ']" placeholder="option ' + (scope.index + 1) + '" required></div></div></td><td><input type="radio" name="optionanswer" value="{{questionOptions[' + scope.index + ']}}" data-ng-model="answer"><br></td></tr>')(scope));
     }
   };
 });'use strict';
