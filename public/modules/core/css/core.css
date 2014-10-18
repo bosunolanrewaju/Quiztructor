@@ -23,17 +23,21 @@
 	CUSTOM STYLE
 *******************************************
 *******************************************/
+.content {
+	margin-top: 0px;
+	padding-top: 90px;
+}
+
 html, body {
 	height: 100%;
 }
 
 .wrapper {
-	min-height: 100%;
+	min-height: 87%;
 }
 
 /*Main body*/
 body {
-	height: 93.5%;
 	background-color: rgb(252,252,252);
 	font-family: 'Open Sans', 'Century Gothic', san-serif;
 	font-size: 17px;
@@ -44,8 +48,12 @@ h1, h2, h3, h4 {
 	font-family: Montserrat, Georgia;
 }
 
+.no-margin-footer {
+	margin-top: 0;
+}
+
 footer {
-	margin-top: -100px;
+	/*margin-top: -90px;*/
 	text-align: center;
 	color: white;
 	font-size: 0.9em;
@@ -200,7 +208,14 @@ a.create-quiz:hover {
 
 .createquiz:hover {
 	text-decoration: none;
+	background-color: rgb(11, 11, 154);
 	color: white;
+}
+
+.createquiz[disabled], .createquiz:disabled {
+	cursor: not-allowed;
+	background-color: rgb(11, 11, 104);
+	opacity: 0.8;
 }
 
 button.createquiz:active {
@@ -304,7 +319,13 @@ QUIZZES page
 
 
 /*Table */
-#optionDiv tr td:last-child {
+#optionDiv {
+	margin: 20px auto;
+	float: none;
+	padding: 20px;
+}
+
+#optionDiv tr {
 	text-align: center;
 	background-color: rgb(245,245,245);
 }

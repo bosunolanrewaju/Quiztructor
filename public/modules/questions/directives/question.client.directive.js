@@ -20,7 +20,7 @@ angular.module('questions')
 
             	$scope.$watch(function(){
             		for (var i = 0; i < $scope.questionOptions.length; i++) {
-    	            		if($scope.questionOptions[i] === ''){
+    	            		if($scope.questionOptions[i] === undefined){
     	            			$scope.questionOptions.splice(i, 1);
     	            		}
     	            }

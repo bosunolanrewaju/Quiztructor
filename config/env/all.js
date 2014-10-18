@@ -2,9 +2,9 @@
 
 module.exports = {
 	app: {
-		title: 'Quiztructor',
-		description: 'Mean stack app',
-		keywords: 'means stack'
+		title: 'Quiztructor - A quiz contructor application',
+		description: 'Quiztructor is quiz application built on MEAN stack where you can create and take unlimited number of quizzes. Create and Share, Take and Share.',
+		keywords: 'means stack, quiz app, test app'
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',

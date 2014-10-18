@@ -10,16 +10,16 @@
 			</a>
 		</h3> 
 		<span>{{quiz.description}}</span>
-		<div style="text-align:center; margin:30px 0; border-top:1px dashed #ddd; padding-top:30px">
-			<a class="btn btn-primary createquiz" data-ng-if="!isAuthor" data-ng-click="takeQuiz()" data-ng-hide="takethequiz">Take Quiz Now</a>
+		<div data-ng-if="!isAuthor" style="text-align:center; margin:30px 0; border-top:1px dashed #ddd; padding-top:30px">
+			<a class="btn btn-primary createquiz" data-ng-click="takeQuiz()" data-ng-hide="takethequiz">Take Quiz Now</a>
 		</div>
 			<the-questions></the-questions>
 			<div class="center">
 				<button data-ng-if="isAuthor" data-ng-click="loadForm()" class="btn btn-primary">Add More Question</button>
 			</div>
 	</div>
-	<div style="text-align:center; margin:30px 0; border-top:1px dashed #ddd; padding-top:30px">
-		<a data-ng-if="isAuthor" class="createquiz" href="/#!/quiz/create">Create New Quiz</a>
+	<div data-ng-if="isAuthor" style="text-align:center; margin:30px 0; border-top:1px dashed #ddd; padding-top:30px">
+		<a class="createquiz" href="/#!/quiz/create">Create New Quiz</a>
 	</div>
 	
 </section>

@@ -1,8 +1,8 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$window',
-	function($scope, Authentication, $window) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', '$window', '$location',
+	function($scope, Authentication, $window, $location) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 
@@ -11,5 +11,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.screenHeight = function(){
 			return $window.innerHeight + 'px';
 		};
+
+
 	}
 ]);

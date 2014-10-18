@@ -34,7 +34,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
-	<!--Application CSS Files-->
+	<!--Appmargin-footerlication CSS Files-->
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
 	{% endfor %}
 
@@ -51,7 +51,11 @@
 			<section class="container">
 				{% block content %}{% endblock %}
 			</section>
-		</section>
+		</section>	
+	</div>
+		<footer data-ng-class="{'no-margin-footer': isNotHome('/')}">
+			<div class="copy">&copy; 2014 Andela Institute | 'Bosun (El'Magnifico)</div>
+		</footer>
 
 		<!--Embedding The User Object-->
 		<script type="text/javascript">
@@ -67,10 +71,7 @@
 		<script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
 
 		{% endif %}
-	</div>
-		<footer>
-			<div class="copy">&copy; 2014 Andela Institute</div>
-		</footer>
+
 </body>
 
 </html>
