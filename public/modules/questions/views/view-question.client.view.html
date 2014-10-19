@@ -6,8 +6,8 @@
 			<label for="option_{{currentQuestion._id}}_{{$index + 1}}">{{option}}</label>
 		</li>
 	</ol>
-	<a class="btn btn-primary createquiz" data-ng-click="getNextQuestion()" data-ng-disabled="userAnswer == '' && done == false" data-ng-hide="count === quiz.questions.length">Submit & Proceed</a>
-	<button class="btn btn-success createquiz" type="submit" data-ng-show="count === quiz.questions.length" data-ng-click="markQuiz()" data-ng-disabled="done == false">Submit Quiz</button>
+	<a class="btn btn-primary " style="padding: 20px 40px" data-ng-click="getNextQuestion()" data-ng-disabled="userAnswer == '' && done == false" data-ng-hide="count === quiz.questions.length">Submit & Proceed</a>
+	<button class="btn btn-success" style="padding: 20px 40px" type="submit" data-ng-show="count === quiz.questions.length" data-ng-click="markQuiz()" data-ng-disabled="done == false">Submit Quiz</button>
 </section>
 <section class="question" data-ng-if="isAuthor">
 	<div data-ng-repeat="currentQuestion in quiz.questions">
