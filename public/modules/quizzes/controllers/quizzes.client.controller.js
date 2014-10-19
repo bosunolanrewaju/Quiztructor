@@ -126,6 +126,14 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
             $scope.takethequiz = true;
         };
 
+
+        $scope.share = function(){
+            FB.ui({
+                method: 'share',
+                href: 'https://developers.facebook.com/docs/',
+            }, function(response){});
+        };
+
 }]).controller('LoadFormCtrl', ['$scope', '$window', 'AddOption', '$compile', '$stateParams', 'QuestionService', '$modalInstance',  function($scope, $window, AddOption, $compile, $stateParams, QuestionService, $modalInstance){
     $scope.index = 1;
     $scope.addOption = function(){

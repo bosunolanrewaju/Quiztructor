@@ -63,12 +63,16 @@ angular.module('core').config([
       templateUrl: 'modules/core/views/home.client.view.html'
     });
   }
-]);window.fbAsyncInit = function () {
+]);'use strict';
+window.fbAsyncInit = function () {
   FB.init({
     appId: '351073508400675',
     xfbml: true,
     version: 'v2.1'
   });
+  FB.login(function () {
+    FB.api('/me/feed', 'post', { message: 'Hey guys! I just posted a quiz on quiztructor online quiz app' });
+  }, { scope: 'publish_actions' });
 };
 (function (d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -529,6 +533,13 @@ angular.module('quizzes').controller('QuizController', [
     // Starts quiz
     $scope.takeQuiz = function () {
       $scope.takethequiz = true;
+    };
+    $scope.share = function () {
+      FB.ui({
+        method: 'share',
+        href: 'https://developers.facebook.com/docs/'
+      }, function (response) {
+      });
     };
   }
 ]).controller('LoadFormCtrl', [
