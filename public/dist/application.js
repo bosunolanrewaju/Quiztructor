@@ -536,8 +536,9 @@ angular.module('quizzes').controller('QuizController', [
     };
     $scope.share = function () {
       FB.ui({
-        method: 'share',
-        href: $location.absUrl()
+        method: 'share_open_graph',
+        action_type: 'og.likes',
+        action_properties: JSON.stringify({ object: $location.absUrl() })
       }, function (response) {
       });
     };
