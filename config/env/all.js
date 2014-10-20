@@ -4,7 +4,8 @@ module.exports = {
 	app: {
 		title: 'Quiztructor - A quiz contructor application',
 		description: 'Quiztructor is quiz application built on MEAN stack where you can create and take unlimited number of quizzes. Create and Share, Take and Share.',
-		keywords: 'means stack, quiz app, test app'
+		keywords: 'means stack, quiz app, test app',
+		logoUrl: 'http://quiztructor.herokuapp.com/modules/core/img/brand/logo.png'
 	},
 	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
