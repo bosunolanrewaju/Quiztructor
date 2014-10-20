@@ -8,6 +8,9 @@
 			<a data-ng-if="isAuthor" data-ng-click="editQuiz()" class="pull-right btn btn-primary">
 				<i class="glyphicon glyphicon-pencil"></i>
 			</a>
+			<a data-ng-if="isAuthor" data-ng-click="share()" class="pull-right btn btn-success">
+				<i class="glyphicon glyphicon-share"></i>
+			</a>
 		</h3> 
 		<span>{{quiz.description}}</span>
 		<div data-ng-if="!isAuthor" style="text-align:center; margin:30px 0; border-top:1px dashed #ddd; padding-top:30px">
