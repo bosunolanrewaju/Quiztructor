@@ -537,7 +537,6 @@ angular.module('quizzes').controller('QuizController', [
     $scope.share = function () {
       FB.ui({
         method: 'share',
-        action_type: 'website',
         href: $location.absUrl()
       }, function (response) {
       });
