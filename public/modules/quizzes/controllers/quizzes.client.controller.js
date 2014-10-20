@@ -130,7 +130,7 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
         $scope.share = function(){
             FB.ui({
                 method: 'share',
-                action_type: 'og.likes',
+                action_type: 'website',
                 href: $location.absUrl()
             }, function(response){});
         };
