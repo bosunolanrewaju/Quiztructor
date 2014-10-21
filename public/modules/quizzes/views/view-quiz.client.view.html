@@ -1,5 +1,5 @@
 <section class="view-quiz" data-ng-controller="QuizController" data-ng-init="getQuiz()">
-	<div>
+	<div data-ng-if="quiz.length">
 		<h3 class="clearfix">
 			<div class="col-sm-10">{{quiz.quizName}}</div>
 			<a data-ng-if="isAuthor" data-ng-click="removeQuiz()" class="pull-right btn btn-danger">
@@ -20,6 +20,9 @@
 			<div class="center">
 				<button data-ng-if="isAuthor" data-ng-click="loadForm()" class="btn btn-primary">Add More Question</button>
 			</div>
+	</div>
+	<div class="center" data-ng-if="!quiz.length">
+		Quiz not found. <a href="/#!/quizzes">Take quizzes here</a>
 	</div>
 	<div data-ng-if="isAuthor" style="text-align:center; margin:30px 0; border-top:1px dashed #ddd; padding-top:30px">
 		<a class="createquiz" href="/#!/quiz/create">Create New Quiz</a>
