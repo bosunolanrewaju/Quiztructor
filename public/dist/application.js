@@ -69,10 +69,11 @@ window.fbAsyncInit = function () {
     appId: '351073508400675',
     xfbml: true,
     version: 'v2.1'
-  });
-  FB.login(function () {
-    FB.api('/me/feed', 'post', { message: 'Hey guys! I just posted a quiz on quiztructor online quiz app' });
-  }, { scope: 'publish_actions' });
+  });  // FB.login(function(){
+       //     FB.api('/me/feed', 'post', {message: 'Hey guys! I just posted a quiz on quiztructor online quiz app'});
+       //   }, {
+       //     scope: 'publish_actions'
+       //   });
 };
 (function (d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -578,14 +579,21 @@ angular.module('quizzes').controller('QuizController', [
   '$scope',
   'QuizService',
   '$modalInstance',
+  '$location',
   '$window',
   '$stateParams',
-  function ($scope, QuizService, $modalInstance, $location, $stateParams) {
+  function ($scope, QuizService, $modalInstance, $location, $window, $stateParams) {
     $scope.quiz = QuizService.get({ quizId: $stateParams.quizId });
     $scope.postQuiz = function () {
       var quiz = $scope.quiz;
       quiz.$update(function () {
-        $location.path('quiz' + ($scope.quiz.slug !== '') ? $scope.quiz.slug : $scope.quiz._id);  // $window.location.reload();
+        var link = $scope.quiz.slug !== '' ? $scope.quiz.slug : $scope.quiz._id;
+        $modalInstance.close();
+        if ($location.path() === '/quiz/' + link) {
+          $window.location.reload();
+        } else {
+          $location.path('/quiz/' + link);
+        }
       }, function (error) {
       });
     };

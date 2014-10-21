@@ -148,7 +148,6 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
     $scope.questionOptions = [];
 
     $scope.postQuestion = function(){
-
         var questionObj =  new QuestionService({
             quizId: $stateParams.quizId,
             question: $scope.question,
@@ -163,15 +162,20 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
-}]).controller('LoadEditQuizFormCtrl', ['$scope', 'QuizService', '$modalInstance', '$window', '$stateParams', function($scope, QuizService, $modalInstance, $location, $stateParams){
+}]).controller('LoadEditQuizFormCtrl', ['$scope', 'QuizService', '$modalInstance', '$location', '$window', '$stateParams', function($scope, QuizService, $modalInstance, $location, $window, $stateParams){
     $scope.quiz = QuizService.get({quizId: $stateParams.quizId}); 
 
     $scope.postQuiz = function(){
         var quiz = $scope.quiz;
 
         quiz.$update(function(){
-            $location.path('quiz' + ($scope.quiz.slug !== '') ? $scope.quiz.slug : $scope.quiz._id);
-            // $window.location.reload();
+            var link = ($scope.quiz.slug !== '') ? $scope.quiz.slug : $scope.quiz._id;
+            $modalInstance.close();
+            if($location.path() === ('/quiz/' + link)){
+                $window.location.reload();
+            } else {
+                $location.path('/quiz/' + link);
+            }
         }, function(error){
             
         });
