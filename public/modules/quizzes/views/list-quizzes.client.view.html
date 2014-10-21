@@ -3,7 +3,7 @@
 	<button data-ng-if="user._id === quiz.user._id" data-ng-click="share()">Share</button>
 	<!-- <div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div> -->
 	<ul>
-		<li class="quiz-list clearfix" ng-repeat="quiz in quizzes">
+		<li class="quiz-list clearfix" ng-repeat="quiz in quizzes | limitTo: 20">
 			<h3><a href="#!/quiz/{{quiz.slug || quiz._id}}">{{quiz.quizName}}</a></h3> ({{quiz.questions.length}} Question(s))
 			<a href="#!/quiz/{{quiz.slug || quiz._id}}" class="pull-right btn btn-default" data-ng-if="user._id === quiz.user._id">Edit <span class="glyphicon glyphicon-pencil"></span></a>
 			<a href="#!/quiz/{{quiz.slug || quiz._id}}" class="pull-right btn btn-success" data-ng-if="user._id !== quiz.user._id">Take Quiz</a>
