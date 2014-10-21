@@ -455,7 +455,7 @@ angular.module('quizzes').controller('QuizController', [
         }
         $scope.$watch(function () {
           if ($scope.done) {
-            $location.path('/quiz/' + $scope.quizSlug);
+            $location.path('/quiz/' + ($scope.quizSlug !== '') ? $scope.quizSlug : $scope.quizId);
           }
         });
       }, function (errorResponse) {
@@ -580,12 +580,12 @@ angular.module('quizzes').controller('QuizController', [
   '$modalInstance',
   '$window',
   '$stateParams',
-  function ($scope, QuizService, $modalInstance, $window, $stateParams) {
+  function ($scope, QuizService, $modalInstance, $location, $stateParams) {
     $scope.quiz = QuizService.get({ quizId: $stateParams.quizId });
     $scope.postQuiz = function () {
       var quiz = $scope.quiz;
       quiz.$update(function () {
-        $window.location.reload();
+        $location.path('quiz' + ($scope.quiz.slug !== '') ? $scope.quiz.slug : $scope.quiz._id);  // $window.location.reload();
       }, function (error) {
       });
     };

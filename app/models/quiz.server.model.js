@@ -50,7 +50,7 @@ var QuizSchema = new Schema({
 	},
 	slug: {
 		type: String,
-		default: '404.html',
+		default: '',
 		trim: true
 	},
 	questions: [QuestionSchema],
