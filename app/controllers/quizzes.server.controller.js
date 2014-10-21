@@ -30,7 +30,7 @@ exports.create = function(req, res, next){
 };
 
 exports.list = function(req, res){
-    Quiz.find().populate('user', 'displayName').select('quizName category description questions _id user').exec(function(err, Quizzes){
+    Quiz.find().populate('user', 'displayName').select('quizName slug category description questions _id user').exec(function(err, Quizzes){
         if(err){
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
@@ -42,7 +42,12 @@ exports.list = function(req, res){
 };
 
 exports.retrieve = function(req, res){
-    res.jsonp(req.quiz);
+    if(req.quiz instanceof Array){
+        res.jsonp(req.quiz[0]);
+    } else {
+        res.jsonp(req.quiz);
+    }
+    
 };
 
 exports.edit =function(req, res){
@@ -103,19 +108,37 @@ exports.processResult = function(req, res){
 
 // Middleware for fetching quiz by findById
 exports.fetchById = function(req, res, next, id){
-    Quiz.findById(id).populate('user', 'displayName').select('quizName category description questions.question questions.questionOptions questions._id user').exec(function(err, quiz){
+    if(id.indexOf('-') > -1){
+        Quiz.find().populate('user', 'displayName').where('slug').equals(id).select('quizName slug category description questions.question questions.questionOptions questions._id user').exec(function(err, quiz){
+            if(err) return next(err);
+            if(!quiz) return next(new Error('No quiz found in that url'));
+            req.quiz = quiz;
+            next();
+        });
+    } else {
+        Quiz.findById(id).populate('user', 'displayName').select('quizName slug category description questions.question questions.questionOptions questions._id user').exec(function(err, quiz){
+            if(err) return next(err);
+            if(!quiz) return next(new Error('No quiz found with the id: ' + id));
+            req.quiz = quiz;
+            next();
+        });
+    }
+};
+exports.fetchByCategory = function(req, res, next, category){
+    Quiz.find().populate('user', 'displayName').where('category').equals(category).select('quizName user').exec(function(err, quiz){
         if(err) return next(err);
-        if(!quiz) return next(new Error('No quiz found with the id: ' + id));
+        if(!quiz) return next(new Error('No quiz found with the category: ' + category));
         req.quiz = quiz;
         next();
     });
 };
-exports.fetchByCategory = function(req, res, next, description){
-    Quiz.find().populate('user', 'displayName').where('description').equals(description).select('quizName user').exec(function(err, quiz){
-        if(err) return next(err);
-        if(!quiz) return next(new Error('No quiz found with the description: ' + description));
-        req.quiz = quiz;
-        next();
-    });
-};
+
+// exports.fetchBySlug = function(req, res, next, slug){
+//     Quiz.find().populate('user', 'displayName').where('slug').equals(slug).select('quizName category description questions.question questions.questionOptions questions._id user').exec(function(err, quiz){
+//         if(err) return next(err);
+//         if(!quiz) return next(new Error('No quiz found in that url'));
+//         req.quiz = quiz;
+//         next();
+//     });
+// };
 

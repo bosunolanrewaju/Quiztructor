@@ -432,10 +432,13 @@ angular.module('quizzes').controller('QuizController', [
     $scope.createQuiz = function () {
       var quiz = new QuizService({
           quizName: this.quizName,
-          description: this.description
+          category: this.category,
+          description: this.description,
+          slug: $scope.createSlug(this.quizName)
         });
       quiz.$save(function (response) {
         $scope.quizId = response._id;
+        $scope.quizSlug = response.slug;
         for (var j = 0; j < $scope.questionOptions.length; j++) {
           if ($scope.questionOptions[j] === undefined) {
             $scope.questionOptions.splice(j, 1);
@@ -453,7 +456,7 @@ angular.module('quizzes').controller('QuizController', [
         }
         $scope.$watch(function () {
           if ($scope.done) {
-            $location.path('/quiz/' + $scope.quizId);
+            $location.path('/quiz/' + $scope.quizSlug);
           }
         });
       }, function (errorResponse) {
@@ -522,9 +525,12 @@ angular.module('quizzes').controller('QuizController', [
           size: '',
           resolve: {
             question: function () {
+              $scope.slug = $scope.createSlug($scope.quizName);
               return {
                 quizName: $scope.quizName,
-                description: $scope.description
+                description: $scope.description,
+                category: $scope.category,
+                slug: $scope.slug
               };
             }
           }
@@ -540,6 +546,11 @@ angular.module('quizzes').controller('QuizController', [
         href: $location.absUrl()
       }, function (response) {
       });
+    };
+    $scope.createSlug = function (quizName) {
+      if (quizName !== undefined) {
+        return quizName.toLowerCase().replace(/&/g, 'and').replace(/\s+/g, '-');
+      }
     };
   }
 ]).controller('LoadFormCtrl', [
@@ -600,7 +611,6 @@ angular.module('quizzes').factory('QuizService', [
   return {
     addOption: function (scope, compile) {
       scope.index++;
-      console.log(scope.index);
       angular.element(document.getElementById('optionDiv')).append(compile('<tr><td><div class="form-group"><div class="col-md-12"><input class="form-control" type="text" name="option" data-ng-model="questionOptions[' + scope.index + ']" placeholder="option ' + (scope.index + 1) + '" required></div></div></td><td><input type="radio" name="optionanswer" value="{{questionOptions[' + scope.index + ']}}" data-ng-model="answer"><br></td></tr>')(scope));
     }
   };

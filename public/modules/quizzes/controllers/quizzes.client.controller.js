@@ -9,10 +9,13 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
             
             var quiz = new QuizService({
                 quizName: this.quizName,
-                description: this.description
+                category: this.category,
+                description: this.description,
+                slug: $scope.createSlug(this.quizName)
             });
             quiz.$save(function(response){
                 $scope.quizId = response._id;
+                $scope.quizSlug = response.slug;
                 for (var j = 0; j < $scope.questionOptions.length; j++) {
                         if($scope.questionOptions[j] === undefined){
                             $scope.questionOptions.splice(j, 1);
@@ -31,7 +34,7 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
                 
                 $scope.$watch(function(){
                     if($scope.done){
-                        $location.path('/quiz/' + $scope.quizId);
+                        $location.path('/quiz/' + $scope.quizSlug);
                     }
                 });
             }, function(errorResponse){
@@ -112,9 +115,12 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
                 size: '',
                 resolve: {
                     question: function () {
+                        $scope.slug = $scope.createSlug($scope.quizName);
                       return  {
                             quizName: $scope.quizName,
-                            description: $scope.description
+                            description: $scope.description,
+                            category: $scope.category,
+                            slug: $scope.slug
                         };
                     }
                 }
@@ -133,6 +139,12 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
                 href: $location.absUrl()
             }, function(response){});
         };
+
+        $scope.createSlug = function(quizName){
+            if(quizName !== undefined) {
+                return quizName.toLowerCase().replace(/&/g, 'and').replace(/\s+/g, '-');
+            }
+        }
 
 }]).controller('LoadFormCtrl', ['$scope', '$window', 'AddOption', '$compile', '$stateParams', 'QuestionService', '$modalInstance',  function($scope, $window, AddOption, $compile, $stateParams, QuestionService, $modalInstance){
     $scope.index = 1;

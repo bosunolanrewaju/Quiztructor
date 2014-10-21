@@ -48,6 +48,11 @@ var QuizSchema = new Schema({
 		default: 'Uncategorized',
 		trim: true
 	},
+	slug: {
+		type: String,
+		default: '404.html',
+		trim: true
+	},
 	questions: [QuestionSchema],
 
 	user: {

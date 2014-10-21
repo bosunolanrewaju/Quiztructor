@@ -4,9 +4,9 @@
 	<!-- <div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div> -->
 	<ul>
 		<li class="quiz-list clearfix" ng-repeat="quiz in quizzes">
-			<h3><a href="#!/quiz/{{quiz._id}}">{{quiz.quizName}}</a></h3> ({{quiz.questions.length}} Question(s))
-			<a href="#!/quiz/{{quiz._id}}" class="pull-right btn btn-default" data-ng-if="user._id === quiz.user._id">Edit <span class="glyphicon glyphicon-pencil"></span></a>
-			<a href="#!/quiz/{{quiz._id}}" class="pull-right btn btn-success" data-ng-if="user._id !== quiz.user._id">Take Quiz</a>
+			<h3><a href="#!/quiz/{{quiz.slug}}">{{quiz.quizName}}</a></h3> ({{quiz.questions.length}} Question(s))
+			<a href="#!/quiz/{{quiz.slug}}" class="pull-right btn btn-default" data-ng-if="user._id === quiz.user._id">Edit <span class="glyphicon glyphicon-pencil"></span></a>
+			<a href="#!/quiz/{{quiz.slug}}" class="pull-right btn btn-success" data-ng-if="user._id !== quiz.user._id">Take Quiz</a>
 		</li>
 	</ul>
 	<div class="center" data-ng-if="!quizzes.length && quizzes.$resolved">
