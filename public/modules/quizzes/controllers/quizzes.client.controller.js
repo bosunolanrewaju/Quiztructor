@@ -11,7 +11,6 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
                 quizName: this.quizName,
                 category: this.category,
                 description: this.description,
-                slug: $scope.createSlug(this.quizName)
             });
             quiz.$save(function(response){
                 $scope.quizId = response._id;
@@ -115,12 +114,10 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
                 size: '',
                 resolve: {
                     question: function () {
-                        $scope.slug = $scope.createSlug($scope.quizName);
                       return  {
                             quizName: $scope.quizName,
                             description: $scope.description,
-                            category: $scope.category,
-                            slug: $scope.slug
+                            category: $scope.category
                         };
                     }
                 }
@@ -140,11 +137,7 @@ angular.module('quizzes').controller('QuizController', ['$scope', 'QuizService',
             }, function(response){});
         };
 
-        $scope.createSlug = function(quizName){
-            if(quizName !== undefined) {
-                return quizName.toLowerCase().replace(/&/g, 'and').replace(/\s+/g, '-');
-            }
-        }
+        
 
 }]).controller('LoadFormCtrl', ['$scope', '$window', 'AddOption', '$compile', '$stateParams', 'QuestionService', '$modalInstance',  function($scope, $window, AddOption, $compile, $stateParams, QuestionService, $modalInstance){
     $scope.index = 1;

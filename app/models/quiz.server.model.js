@@ -62,4 +62,9 @@ var QuizSchema = new Schema({
 
 });
 
+QuizSchema.pre('save', function(next){
+    this.slug = this.quizName.toLowerCase().replace(/&/g, 'and').replace(/\s+/g, '-');
+    next();
+});
+
 mongoose.model('Quiz', QuizSchema);
