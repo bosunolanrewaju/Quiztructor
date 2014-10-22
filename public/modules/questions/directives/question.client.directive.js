@@ -66,7 +66,7 @@ angular.module('questions')
 					$scope.userAnswerArray.push(this.userAnswer);
 
 					var result = new ProcessQuiz({
-						quizId: $stateParams.quizId,
+						quizId: $scope.quiz._id,
 						userAnswer: $scope.userAnswerArray
 					});
 
