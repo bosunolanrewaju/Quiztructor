@@ -30,7 +30,7 @@ exports.create = function(req, res, next){
 };
 
 exports.list = function(req, res){
-    Quiz.find().populate('user', 'displayName').select('quizName slug category description questions _id user').exec(function(err, Quizzes){
+    Quiz.find().populate('user', 'displayName').select('quizName slug category description questions._id question.question question.questionOptions _id user').exec(function(err, Quizzes){
         if(err){
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
